@@ -47,8 +47,8 @@ if (userData) {
   // Initialize socket connection
   const initializeSocket = useCallback(() => {
     console.log("Initializing socket connection...in create");
-    console.log(VITE_BackendURI);
-    const newSocket = io(VITE_BackendURI, {
+    console.log(import.meta.env.VITE_BackendURI);
+    const newSocket = io(import.meta.env.VITE_BackendURI, {
       transports: ["websocket"],
     });
     setSocket(newSocket);

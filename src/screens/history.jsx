@@ -11,7 +11,7 @@ const History = () => {
     useEffect(() => {
         const fetchHistoryData = async () => {
             try {
-                const response = await fetch(`VITE_BackendURI/history/${userId}`);
+                const response = await fetch(`import.meta.envVITE_BackendURI/history/${userId}`);
                 const data = await response.json();
                 setHistoryData(data);
             } catch (error) {
