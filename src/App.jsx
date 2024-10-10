@@ -10,6 +10,7 @@ import './App.css'; // Make sure styles are applied properly
 import { TonConnectButton } from "@tonconnect/ui-react";
 import { useTonAddress } from "@tonconnect/ui-react";
 import { useTonConnect } from "./hook/useTonConnect";
+import { useEffect } from 'react';
 
 
 function App() {
@@ -20,6 +21,11 @@ function App() {
 
   const rawAddress = useTonAddress(false);
 
+  useEffect(() => {
+
+    console.log("dfddfdfdfdfdfdf");
+  }, [])
+  
   return (
     <Router>
       <div className="App">
