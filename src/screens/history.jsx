@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import User from '../components/user';
 import ReferralSystem from '../components/referal';
 
+const VITE_BackendURI = process.env.VITE_BackendURI
+
 const History = () => {
     const [historyData, setHistoryData] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -9,7 +11,7 @@ const History = () => {
     useEffect(() => {
         const fetchHistoryData = async () => {
             try {
-                const response = await fetch(`import.meta.env.VITE_BackendURI/history/${userId}`);
+                const response = await fetch(`VITE_BackendURI/history/${userId}`);
                 const data = await response.json();
                 setHistoryData(data);
             } catch (error) {

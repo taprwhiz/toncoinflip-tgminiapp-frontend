@@ -5,6 +5,7 @@ import { useTonAddress, useTonConnectUI } from "@tonconnect/ui-react";
 import { toNano, Address } from "ton-core";
 import "dotenv/config";
 
+const VITE_BackendURI = process.env.VITE_BackendURI;
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -46,14 +47,14 @@ if (userData) {
   // Initialize socket connection
   const initializeSocket = useCallback(() => {
     console.log("Initializing socket connection...in create");
-    console.log(import.meta.env.VITE_BackendURI);
-    const newSocket = io(import.meta.env.VITE_BackendURI, {
+    console.log(VITE_BackendURI);
+    const newSocket = io(VITE_BackendURI, {
       transports: ["websocket"],
     });
     setSocket(newSocket);
 
     newSocket.on("connect", () => {
-      console.log("Socket connected in create:", newSocket.id);
+      console.log("Socket connected in create:", newSocket.id);  
       setConnected(true);
     });
     newSocket.on("disconnect", () => {

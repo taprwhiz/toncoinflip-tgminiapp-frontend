@@ -6,6 +6,7 @@ import { useTonAddress, useTonConnectUI } from "@tonconnect/ui-react";
 import { toNano, Address } from "ton-core";
 import 'dotenv/config'
 
+const VITE_BackendURI = process.env.VITE_BackendURI;
 
 export const Box = ({ player1, player2, status, wager, gameId, inviteCode }) => {
   const [socket, setSocket] = useState(null);
@@ -25,7 +26,7 @@ export const Box = ({ player1, player2, status, wager, gameId, inviteCode }) => 
       return;
     }
     console.log("Initializing socket connection...join");
-    const newSocket = io(import.meta.env.VITE_BackendURI, {
+    const newSocket = io(VITE_BackendURI, {
       transports: ["websocket"],
     });
     newSocket.on("connect", () => {

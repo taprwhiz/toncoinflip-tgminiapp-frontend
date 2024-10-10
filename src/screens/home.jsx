@@ -7,6 +7,8 @@ import io from "socket.io-client";
 import "../App.css";
 import "dotenv/config";
 
+const VITE_BackendURI = process.env.VITE_BackendURI;
+
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
@@ -40,7 +42,7 @@ function Home() {
   // Establish WebSocket connection
   useEffect(() => {
     // Create socket connection
-    const newSocket = io(import.meta.env.VITE_BackendURI, {
+    const newSocket = io(VITE_BackendURI, {
       transports: ["websocket"],
     });
     setSocket(newSocket);
